@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "genre": {
+      "GENRE00": {},
+      "GENRE01": {},
+      "GENRE02": {}
+    }
+  },
+  "new": {
+    "genre": {
+      "genre_ref01": {}
+    }
+  }
+}

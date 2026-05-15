@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Binary Jazz"
+        url: "https://binaryjazz.us/genrenator-api/"
+      }
+      description: "The Genrenator API generates random music genres and genre-related stories based on various fragments of attributes such as instruments and adjectives. It features endpoints for both genre and genre story requests, allowing developers to retrieve unique genre information programmatically. The API uses catalogs of genre fragments including instruments, beats, adjectives, prefixes and suffixes, regions, and genres to create unique combinations."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://binaryjazz.us/wp-json/genrenator/v1"
+        }
+      ]
+      title: "Genrenator API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

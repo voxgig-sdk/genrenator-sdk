@@ -1,0 +1,28 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 4
+  metrics: count: method: 4
+
+  entity: genre: {
+    path: "/genre": {
+      op: load: method: *GET
+    }
+    path: "/genre/{count}": {
+      rename: param: "count": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: story: {
+    path: "/story": {
+      op: load: method: *GET
+    }
+    path: "/story/{count}": {
+      rename: param: "count": *"id"
+      op: load: method: *GET
+    }
+  }
+
+}

@@ -1,0 +1,166 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Genrenator API",
+    "description": "The Genrenator API generates random music genres and genre-related stories based on various fragments of attributes such as instruments and adjectives. It features endpoints for both genre and genre story requests, allowing developers to retrieve unique genre information programmatically. The API uses catalogs of genre fragments including instruments, beats, adjectives, prefixes and suffixes, regions, and genres to create unique combinations.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Binary Jazz",
+      "url": "https://binaryjazz.us/genrenator-api/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://binaryjazz.us/wp-json/genrenator/v1",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/genre": {
+      "get": {
+        "summary": "Get a random music genre",
+        "description": "Returns a single randomly generated music genre string",
+        "operationId": "getGenre",
+        "tags": [
+          "Genre"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully generated a random genre",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "ambient electronic jazz"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/genre/{count}": {
+      "get": {
+        "summary": "Get multiple random music genres",
+        "description": "Returns an array of randomly generated music genre strings. The count parameter specifies how many genres to generate.",
+        "operationId": "getGenres",
+        "tags": [
+          "Genre"
+        ],
+        "parameters": [
+          {
+            "name": "count",
+            "in": "path",
+            "required": true,
+            "description": "Number of genres to generate",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "example": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully generated multiple random genres",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [
+                    "ambient electronic jazz",
+                    "indie folk rock",
+                    "experimental hip hop"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/story": {
+      "get": {
+        "summary": "Get a random genre story",
+        "description": "Returns a single randomly generated story about a music genre",
+        "operationId": "getStory",
+        "tags": [
+          "Story"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully generated a random genre story",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "In the underground clubs of Berlin, a new sound emerged combining electronic beats with traditional folk instruments."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/story/{count}": {
+      "get": {
+        "summary": "Get multiple random genre stories",
+        "description": "Returns an array of randomly generated stories about music genres. The count parameter specifies how many stories to generate.",
+        "operationId": "getStories",
+        "tags": [
+          "Story"
+        ],
+        "parameters": [
+          {
+            "name": "count",
+            "in": "path",
+            "required": true,
+            "description": "Number of stories to generate",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "example": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully generated multiple random genre stories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [
+                    "In the underground clubs of Berlin, a new sound emerged combining electronic beats with traditional folk instruments.",
+                    "A group of musicians in Tokyo pioneered a fusion of ambient soundscapes and traditional percussion.",
+                    "The genre was born in the late night jazz clubs where experimental artists pushed boundaries."
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Genre",
+      "description": "Endpoints for generating random music genres"
+    },
+    {
+      "name": "Story",
+      "description": "Endpoints for generating random stories about music genres"
+    }
+  ],
+  "externalDocs": {
+    "description": "Genrenator API Documentation",
+    "url": "https://binaryjazz.us/genrenator-api/"
+  }
+}
