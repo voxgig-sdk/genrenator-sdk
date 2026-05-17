@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/genrenator-sdk/core"
+	"github.com/voxgig-sdk/genrenator-sdk/go/core"
 )
 
 type BaseFeature struct {

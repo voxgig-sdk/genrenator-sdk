@@ -1,10 +1,10 @@
 package voxgiggenrenatorsdk
 
 import (
-	"github.com/voxgig-sdk/genrenator-sdk/core"
-	"github.com/voxgig-sdk/genrenator-sdk/entity"
-	"github.com/voxgig-sdk/genrenator-sdk/feature"
-	_ "github.com/voxgig-sdk/genrenator-sdk/utility"
+	"github.com/voxgig-sdk/genrenator-sdk/go/core"
+	"github.com/voxgig-sdk/genrenator-sdk/go/entity"
+	"github.com/voxgig-sdk/genrenator-sdk/go/feature"
+	_ "github.com/voxgig-sdk/genrenator-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

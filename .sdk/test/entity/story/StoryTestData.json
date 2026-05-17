@@ -1,9 +1,15 @@
 {
   "existing": {
     "story": {
-      "STORY00": {},
-      "STORY01": {},
-      "STORY02": {}
+      "STORY00": {
+        "id": "STORY00"
+      },
+      "STORY01": {
+        "id": "STORY01"
+      },
+      "STORY02": {
+        "id": "STORY02"
+      }
     }
   },
   "new": {

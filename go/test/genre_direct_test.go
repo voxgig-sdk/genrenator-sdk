@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/genrenator-sdk"
-	"github.com/voxgig-sdk/genrenator-sdk/core"
+	sdk "github.com/voxgig-sdk/genrenator-sdk/go"
+	"github.com/voxgig-sdk/genrenator-sdk/go/core"
 )
 
 func TestGenreDirect(t *testing.T) {

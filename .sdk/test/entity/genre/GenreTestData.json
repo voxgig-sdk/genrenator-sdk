@@ -1,9 +1,15 @@
 {
   "existing": {
     "genre": {
-      "GENRE00": {},
-      "GENRE01": {},
-      "GENRE02": {}
+      "GENRE00": {
+        "id": "GENRE00"
+      },
+      "GENRE01": {
+        "id": "GENRE01"
+      },
+      "GENRE02": {
+        "id": "GENRE02"
+      }
     }
   },
   "new": {
