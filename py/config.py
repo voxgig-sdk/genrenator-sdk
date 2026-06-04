@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://binaryjazz.us/wp-json/genrenator/v1",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },

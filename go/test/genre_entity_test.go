@@ -117,7 +117,6 @@ func genreBasicSetup(extra map[string]any) *entityTestSetup {
 		"GENRENATOR_TEST_GENRE_ENTID": idmap,
 		"GENRENATOR_TEST_LIVE":      "FALSE",
 		"GENRENATOR_TEST_EXPLAIN":   "FALSE",
-		"GENRENATOR_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["GENRENATOR_TEST_GENRE_ENTID"])
@@ -128,7 +127,6 @@ func genreBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["GENRENATOR_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["GENRENATOR_APIKEY"],
 			},
 			extra,
 		})

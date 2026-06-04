@@ -111,7 +111,6 @@ function basicSetup(extra?: any) {
     'GENRENATOR_TEST_STORY_ENTID': idmap,
     'GENRENATOR_TEST_LIVE': 'FALSE',
     'GENRENATOR_TEST_EXPLAIN': 'FALSE',
-    'GENRENATOR_APIKEY': 'NONE',
   })
 
   idmap = env['GENRENATOR_TEST_STORY_ENTID']
@@ -121,7 +120,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new GenrenatorSDK(merge([
       {
-        apikey: env.GENRENATOR_APIKEY,
       },
       extra
     ]))

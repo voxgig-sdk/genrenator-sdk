@@ -69,14 +69,12 @@ def genre_direct_setup(mockres)
   env = Runner.env_override({
     "GENRENATOR_TEST_GENRE_ENTID" => {},
     "GENRENATOR_TEST_LIVE" => "FALSE",
-    "GENRENATOR_APIKEY" => "NONE",
   })
 
   live = env["GENRENATOR_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["GENRENATOR_APIKEY"],
     }
     client = GenrenatorSDK.new(merged_opts)
     return {

@@ -17,8 +17,25 @@ main: {
       ]
       title: "Genrenator API"
       version: "1.0.0"
+      tagline: "Generate randomly invented music genres and short genre stories from a WordPress REST endpoint"
+      homepage: "https://binaryjazz.us/genrenator-api/"
+      docs_url: "https://binaryjazz.us/wp-json/genrenator/v1"
+      about_md: `Genrenator is a small public API hosted at [binaryjazz.us](https://binaryjazz.us/) that produces randomly assembled music genre names and short "genre stories" — short descriptive blurbs built from word lists. It is exposed as a WordPress REST API under the \`genrenator/v1\` namespace.
+
+What you get from the API:
+
+- A single random genre name, e.g. via \`GET /genrenator/v1/genre\`
+- Multiple random genre names by passing a count, e.g. \`GET /genrenator/v1/genre/{count}\`
+- A single random genre story via \`GET /genrenator/v1/story\`
+- Multiple random genre stories via \`GET /genrenator/v1/story/{count}\`
+- A usage counter via \`GET /genrenator/v1/count\`
+
+Operational notes: all routes are plain HTTP GETs, no authentication is required, and CORS is disabled — browser clients calling the API directly may need a server-side proxy.`
+      entity_desc: {
+        genre: "A randomly generated music genre name, returned as a string. Fetch one with `GET /genrenator/v1/genre`, or N at once with `GET /genrenator/v1/genre/{count}`."
+        story: "A short randomly generated \"genre story\" — a descriptive blurb in the style of a music write-up. Fetch one with `GET /genrenator/v1/story`, or N at once with `GET /genrenator/v1/story/{count}`."
+      }
+      auth: false
     }
   }
-}
-
 }

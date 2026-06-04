@@ -91,7 +91,6 @@ def _story_basic_setup(extra):
         "GENRENATOR_TEST_STORY_ENTID": idmap,
         "GENRENATOR_TEST_LIVE": "FALSE",
         "GENRENATOR_TEST_EXPLAIN": "FALSE",
-        "GENRENATOR_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +101,6 @@ def _story_basic_setup(extra):
     if env.get("GENRENATOR_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("GENRENATOR_APIKEY"),
             },
             extra or {},
         ])

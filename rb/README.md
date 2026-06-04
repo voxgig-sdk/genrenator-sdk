@@ -31,9 +31,7 @@ loading a specific record.
 ```ruby
 require_relative "Genrenator_sdk"
 
-client = GenrenatorSDK.new({
-  "apikey" => ENV["GENRENATOR_APIKEY"],
-})
+client = GenrenatorSDK.new({})
 ```
 
 ### 3. Load a genre
@@ -121,7 +119,6 @@ Create a `.env.local` file at the project root:
 
 ```
 GENRENATOR_TEST_LIVE=TRUE
-GENRENATOR_APIKEY=<your-key>
 ```
 
 Then run:
@@ -144,7 +141,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |
