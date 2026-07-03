@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'GENRENATOR_TEST_GENRE_ENTID': {},
     'GENRENATOR_TEST_LIVE': 'FALSE',
+    'GENRENATOR_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.GENRENATOR_TEST_LIVE
 
   if (live) {
     const client = new GenrenatorSDK({
+      apikey: env.GENRENATOR_APIKEY,
     })
 
     let idmap: any = env['GENRENATOR_TEST_GENRE_ENTID']

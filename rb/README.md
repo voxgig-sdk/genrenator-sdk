@@ -1,6 +1,11 @@
 # Genrenator Ruby SDK
 
-The Ruby SDK for the Genrenator API. Provides an entity-oriented interface using idiomatic Ruby conventions.
+
+
+The Ruby SDK for the Genrenator API — an entity-oriented client using idiomatic Ruby conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -31,13 +36,15 @@ loading a specific record.
 ```ruby
 require_relative "Genrenator_sdk"
 
-client = GenrenatorSDK.new({})
+client = GenrenatorSDK.new({
+  "apikey" => ENV["GENRENATOR_APIKEY"],
+})
 ```
 
 ### 3. Load a genre
 
 ```ruby
-result, err = client.Genre(nil).load({ "id" => "example_id" }, nil)
+result, err = client.Genre().load({ "id" => "example_id" })
 raise err if err
 puts result
 ```
@@ -83,11 +90,9 @@ puts fetchdef["headers"]
 Create a mock client for unit testing — no server required:
 
 ```ruby
-client = GenrenatorSDK.test(nil, nil)
+client = GenrenatorSDK.test
 
-result, err = client.Genrenator(nil).load(
-  { "id" => "test01" }, nil
-)
+result, err = client.Genrenator().load({ "id" => "test01" })
 # result contains mock response data
 ```
 
@@ -119,6 +124,7 @@ Create a `.env.local` file at the project root:
 
 ```
 GENRENATOR_TEST_LIVE=TRUE
+GENRENATOR_APIKEY=<your-key>
 ```
 
 Then run:
@@ -141,6 +147,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

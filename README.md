@@ -1,22 +1,8 @@
 # Genrenator SDK
 
-Generate randomly invented music genres and short genre stories from a WordPress REST endpoint
+Genrenator API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Genrenator API
-
-Genrenator is a small public API hosted at [binaryjazz.us](https://binaryjazz.us/) that produces randomly assembled music genre names and short "genre stories" — short descriptive blurbs built from word lists. It is exposed as a WordPress REST API under the `genrenator/v1` namespace.
-
-What you get from the API:
-
-- A single random genre name, e.g. via `GET /genrenator/v1/genre`
-- Multiple random genre names by passing a count, e.g. `GET /genrenator/v1/genre/{count}`
-- A single random genre story via `GET /genrenator/v1/story`
-- Multiple random genre stories via `GET /genrenator/v1/story/{count}`
-- A usage counter via `GET /genrenator/v1/count`
-
-Operational notes: all routes are plain HTTP GETs, no authentication is required, and CORS is disabled — browser clients calling the API directly may need a server-side proxy.
 
 ## Try it
 
@@ -50,27 +36,31 @@ gem install genrenator-sdk
 luarocks install genrenator-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { GenrenatorSDK } from 'genrenator'
 
-const client = new GenrenatorSDK({})
+const client = new GenrenatorSDK({
+  apikey: process.env.GENRENATOR_APIKEY,
+})
 
+// Load genre data
+const genre = await client.Genre().load({})
+console.log(genre.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Genre** | A randomly generated music genre name, returned as a string. Fetch one with `GET /genrenator/v1/genre`, or N at once with `GET /genrenator/v1/genre/{count}`. | `/genre/{count}` |
-| **Story** | A short randomly generated "genre story" — a descriptive blurb in the style of a music write-up. Fetch one with `GET /genrenator/v1/story`, or N at once with `GET /genrenator/v1/story/{count}`. | `/story/{count}` |
+| **Genre** |  | `/genre/{count}` |
+| **Story** |  | `/story/{count}` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -111,15 +101,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from genrenator_sdk import GenrenatorSDK
 
-client = GenrenatorSDK({})
+client = GenrenatorSDK({
+    "apikey": os.environ.get("GENRENATOR_APIKEY"),
+})
 
 
 # Load a specific genre
-genre, err = client.Genre(None).load(
-    {"id": "example_id"}, None
-)
+genre, err = client.Genre().load({"id": "example_id"})
+print(genre)
 ```
 
 ### PHP
@@ -128,13 +120,14 @@ genre, err = client.Genre(None).load(
 <?php
 require_once 'genrenator_sdk.php';
 
-$client = new GenrenatorSDK([]);
+$client = new GenrenatorSDK([
+    "apikey" => getenv("GENRENATOR_APIKEY"),
+]);
 
 
 // Load a specific genre
-[$genre, $err] = $client->Genre(null)->load(
-    ["id" => "example_id"], null
-);
+[$genre, $err] = $client->Genre()->load(["id" => "example_id"]);
+print_r($genre);
 ```
 
 ### Golang
@@ -142,8 +135,13 @@ $client = new GenrenatorSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/genrenator-sdk/go"
 
-client := sdk.NewGenrenatorSDK(map[string]any{})
+client := sdk.NewGenrenatorSDK(map[string]any{
+    "apikey": os.Getenv("GENRENATOR_APIKEY"),
+})
 
+// Load genre data
+genre, err := client.Genre(nil).Load(map[string]any{}, nil)
+fmt.Println(genre)
 ```
 
 ### Ruby
@@ -151,13 +149,14 @@ client := sdk.NewGenrenatorSDK(map[string]any{})
 ```ruby
 require_relative "Genrenator_sdk"
 
-client = GenrenatorSDK.new({})
+client = GenrenatorSDK.new({
+  "apikey" => ENV["GENRENATOR_APIKEY"],
+})
 
 
 # Load a specific genre
-genre, err = client.Genre(nil).load(
-  { "id" => "example_id" }, nil
-)
+genre, err = client.Genre().load({ "id" => "example_id" })
+puts genre
 ```
 
 ### Lua
@@ -165,13 +164,14 @@ genre, err = client.Genre(nil).load(
 ```lua
 local sdk = require("genrenator_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("GENRENATOR_APIKEY"),
+})
 
 
 -- Load a specific genre
-local genre, err = client:Genre(nil):load(
-  { id = "example_id" }, nil
-)
+local genre, err = client:Genre():load({ id = "example_id" })
+print(genre)
 ```
 
 ## Unit testing in offline mode
@@ -190,25 +190,21 @@ const result = await client.Genre().load({ id: 'test01' })
 ### Python
 
 ```python
-client = GenrenatorSDK.test(None, None)
-result, err = client.Genre(None).load(
-    {"id": "test01"}, None
-)
+client = GenrenatorSDK.test()
+result, err = client.Genre().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = GenrenatorSDK::test(null, null);
-[$result, $err] = $client->Genre(null)->load(
-    ["id" => "test01"], null
-);
+$client = GenrenatorSDK::test();
+[$result, $err] = $client->Genre()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Genre(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -217,19 +213,15 @@ result, err := client.Genre(nil).Load(
 ### Ruby
 
 ```ruby
-client = GenrenatorSDK.test(nil, nil)
-result, err = client.Genre(nil).load(
-  { "id" => "test01" }, nil
-)
+client = GenrenatorSDK.test
+result, err = client.Genre().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Genre(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Genre():load({ id = "test01" })
 ```
 
 ## How it works
@@ -333,11 +325,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Genrenator API
-
-- Upstream: [https://binaryjazz.us/genrenator-api/](https://binaryjazz.us/genrenator-api/)
-- API docs: [https://binaryjazz.us/wp-json/genrenator/v1](https://binaryjazz.us/wp-json/genrenator/v1)
 
 ---
 

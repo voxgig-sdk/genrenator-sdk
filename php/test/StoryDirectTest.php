@@ -75,12 +75,14 @@ function story_direct_setup($mockres)
     $env = Runner::env_override([
         "GENRENATOR_TEST_STORY_ENTID" => [],
         "GENRENATOR_TEST_LIVE" => "FALSE",
+        "GENRENATOR_APIKEY" => "NONE",
     ]);
 
     $live = $env["GENRENATOR_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["GENRENATOR_APIKEY"],
         ];
         $client = new GenrenatorSDK($merged_opts);
         return [
