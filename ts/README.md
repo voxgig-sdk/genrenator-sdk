@@ -10,7 +10,7 @@ The TypeScript SDK for the Genrenator API — a type-safe, entity-oriented clien
 
 ## Install
 ```bash
-npm install genrenator
+npm install @voxgig-sdk/genrenator
 ```
 ## Tutorial: your first API call
 

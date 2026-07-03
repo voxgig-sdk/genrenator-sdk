@@ -10,7 +10,7 @@ The PHP SDK for the Genrenator API — an entity-oriented client using PHP conve
 
 ## Install
 ```bash
-composer require voxgig/genrenator-sdk
+composer require voxgig-sdk/genrenator
 ```
 
 

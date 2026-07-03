@@ -10,13 +10,13 @@ The Ruby SDK for the Genrenator API — an entity-oriented client using idiomati
 
 ## Install
 ```bash
-gem install genrenator-sdk
+gem install voxgig-sdk-genrenator
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "genrenator-sdk"
+gem "voxgig-sdk-genrenator"
 ```
 
 Then run:

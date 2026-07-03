@@ -10,7 +10,7 @@ The Python SDK for the Genrenator API — an entity-oriented client following Py
 
 ## Install
 ```bash
-pip install genrenator-sdk
+pip install voxgig-sdk-genrenator
 ```
 
 Or install from source:

@@ -10,7 +10,7 @@ The Lua SDK for the Genrenator API — an entity-oriented client using Lua conve
 
 ## Install
 ```bash
-luarocks install genrenator-sdk
+luarocks install voxgig-sdk-genrenator
 ```
 
 If the module is not yet published, add the source directory to
