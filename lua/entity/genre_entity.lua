@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GenreLoadMatch
+---@param ctrl? table
+---@return Genre
+---@return string? err
 function GenreEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

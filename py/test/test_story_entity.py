@@ -49,8 +49,7 @@ class TestStoryEntity:
         # LOAD
         story_ref01_ent = client.Story(None)
         story_ref01_match_dt0 = {}
-        story_ref01_data_dt0_loaded, err = story_ref01_ent.load(story_ref01_match_dt0, None)
-        assert err is None
+        story_ref01_data_dt0_loaded = story_ref01_ent.load(story_ref01_match_dt0, None)
         assert story_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _story_basic_setup(extra):
         "GENRENATOR_TEST_STORY_ENTID": idmap,
         "GENRENATOR_TEST_LIVE": "FALSE",
         "GENRENATOR_TEST_EXPLAIN": "FALSE",
-        "GENRENATOR_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _story_basic_setup(extra):
     if env.get("GENRENATOR_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("GENRENATOR_APIKEY"),
             },
             extra or {},
         ])

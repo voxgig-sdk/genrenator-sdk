@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `GenrenatorSDK.test()`.
 ## GenreEntity
 
 ```ts
-const genre = client.Genre()
+const genre = client.genre
 ```
 
 ### Operations
@@ -132,7 +131,7 @@ const genre = client.Genre()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Genre().load({ id: 'genre_id' })
+const result = await client.genre.load({ id: 'genre_id' })
 ```
 
 ### Common Methods
@@ -166,7 +165,7 @@ Return a copy of the entity options.
 ## StoryEntity
 
 ```ts
-const story = client.Story()
+const story = client.story
 ```
 
 ### Operations
@@ -176,7 +175,7 @@ const story = client.Story()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Story().load({ id: 'story_id' })
+const result = await client.story.load({ id: 'story_id' })
 ```
 
 ### Common Methods

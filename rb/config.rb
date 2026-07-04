@@ -15,9 +15,6 @@ module GenrenatorConfig
       },
       "options" => {
         "base" => "https://binaryjazz.us/wp-json/genrenator/v1",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -47,6 +44,7 @@ module GenrenatorConfig
                         "orig" => "count",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                   },
@@ -115,6 +113,7 @@ module GenrenatorConfig
                         "orig" => "count",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                   },

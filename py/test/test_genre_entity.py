@@ -49,8 +49,7 @@ class TestGenreEntity:
         # LOAD
         genre_ref01_ent = client.Genre(None)
         genre_ref01_match_dt0 = {}
-        genre_ref01_data_dt0_loaded, err = genre_ref01_ent.load(genre_ref01_match_dt0, None)
-        assert err is None
+        genre_ref01_data_dt0_loaded = genre_ref01_ent.load(genre_ref01_match_dt0, None)
         assert genre_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _genre_basic_setup(extra):
         "GENRENATOR_TEST_GENRE_ENTID": idmap,
         "GENRENATOR_TEST_LIVE": "FALSE",
         "GENRENATOR_TEST_EXPLAIN": "FALSE",
-        "GENRENATOR_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _genre_basic_setup(extra):
     if env.get("GENRENATOR_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("GENRENATOR_APIKEY"),
             },
             extra or {},
         ])

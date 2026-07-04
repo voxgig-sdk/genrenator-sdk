@@ -42,8 +42,7 @@ class StoryEntityTest < Minitest::Test
     # LOAD
     story_ref01_ent = client.Story(nil)
     story_ref01_match_dt0 = {}
-    story_ref01_data_dt0_loaded, err = story_ref01_ent.load(story_ref01_match_dt0, nil)
-    assert_nil err
+    story_ref01_data_dt0_loaded = story_ref01_ent.load(story_ref01_match_dt0, nil)
     assert !story_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def story_basic_setup(extra)
     "GENRENATOR_TEST_STORY_ENTID" => idmap,
     "GENRENATOR_TEST_LIVE" => "FALSE",
     "GENRENATOR_TEST_EXPLAIN" => "FALSE",
-    "GENRENATOR_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def story_basic_setup(extra)
   if env["GENRENATOR_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["GENRENATOR_APIKEY"],
       },
       extra || {},
     ])

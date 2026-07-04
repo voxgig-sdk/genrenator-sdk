@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch StoryLoadMatch
+---@param ctrl? table
+---@return Story
+---@return string? err
 function StoryEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -3,6 +3,8 @@
 import { GenreEntity } from './entity/GenreEntity'
 import { StoryEntity } from './entity/StoryEntity'
 
+export type * from './GenrenatorTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class GenrenatorSDK {
 
 
 
+  _genre?: GenreEntity
+
+  // Idiomatic facade: `client.genre.list()` / `client.genre.load({ id })`.
+  get genre(): GenreEntity {
+    return (this._genre ??= new GenreEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.genre` instead. */
   Genre(data?: any) {
     const self = this
     return new GenreEntity(self,data)
   }
 
 
+  _story?: StoryEntity
+
+  // Idiomatic facade: `client.story.list()` / `client.story.load({ id })`.
+  get story(): StoryEntity {
+    return (this._story ??= new StoryEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.story` instead. */
   Story(data?: any) {
     const self = this
     return new StoryEntity(self,data)

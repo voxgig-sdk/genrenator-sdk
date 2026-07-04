@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Story,
+  StoryLoadMatch,
+} from '../GenrenatorTypes'
 
 // TODO: needs Entity superclass
-class StoryEntity extends GenrenatorEntityBase {
+class StoryEntity extends GenrenatorEntityBase<Story> {
 
   constructor(client: GenrenatorSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class StoryEntity extends GenrenatorEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: StoryLoadMatch, ctrl?: Control): Promise<Story> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class StoryEntity extends GenrenatorEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Story> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

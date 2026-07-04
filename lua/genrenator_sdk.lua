@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:genre():list() / client:genre():load({ id = ... })
+function GenrenatorSDK:genre(data)
+  local EntityMod = require("entity.genre_entity")
+  if data == nil then
+    if self._genre == nil then
+      self._genre = EntityMod.new(self, nil)
+    end
+    return self._genre
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:genre() instead.
 function GenrenatorSDK:Genre(data)
   local EntityMod = require("entity.genre_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:story():list() / client:story():load({ id = ... })
+function GenrenatorSDK:story(data)
+  local EntityMod = require("entity.story_entity")
+  if data == nil then
+    if self._story == nil then
+      self._story = EntityMod.new(self, nil)
+    end
+    return self._story
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:story() instead.
 function GenrenatorSDK:Story(data)
   local EntityMod = require("entity.story_entity")
   return EntityMod.new(self, data)

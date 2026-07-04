@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## GenreEntity
 
 ```lua
-local genre = client:Genre(nil)
+local genre = client:genre(nil)
 ```
 
 ### Operations
@@ -98,7 +97,7 @@ local genre = client:Genre(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Genre():load({ id = "genre_id" })
+local result, err = client:genre():load({ id = "genre_id" })
 ```
 
 ### Common Methods
@@ -134,7 +133,7 @@ Return the entity name.
 ## StoryEntity
 
 ```lua
-local story = client:Story(nil)
+local story = client:story(nil)
 ```
 
 ### Operations
@@ -144,7 +143,7 @@ local story = client:Story(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Story():load({ id = "story_id" })
+local result, err = client:story():load({ id = "story_id" })
 ```
 
 ### Common Methods

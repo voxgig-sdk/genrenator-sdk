@@ -49,8 +49,7 @@ class StoryEntityTest extends TestCase
         // LOAD
         $story_ref01_ent = $client->Story(null);
         $story_ref01_match_dt0 = [];
-        [$story_ref01_data_dt0_loaded, $err] = $story_ref01_ent->load($story_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $story_ref01_data_dt0_loaded = $story_ref01_ent->load($story_ref01_match_dt0, null);
         $this->assertNotNull($story_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function story_basic_setup($extra)
         "GENRENATOR_TEST_STORY_ENTID" => $idmap,
         "GENRENATOR_TEST_LIVE" => "FALSE",
         "GENRENATOR_TEST_EXPLAIN" => "FALSE",
-        "GENRENATOR_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function story_basic_setup($extra)
     if ($env["GENRENATOR_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["GENRENATOR_APIKEY"],
             ],
             $extra ?? [],
         ]);

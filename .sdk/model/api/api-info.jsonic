@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "Binary Jazz"
         url: "https://binaryjazz.us/genrenator-api/"

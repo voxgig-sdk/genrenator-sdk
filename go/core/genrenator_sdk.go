@@ -245,11 +245,17 @@ func (sdk *GenrenatorSDK) Direct(fetchargs map[string]any) (map[string]any, erro
 }
 
 
+// Genre returns a Genre entity bound to this client.
+// Idiomatic usage: client.Genre(nil).List(nil, nil) or
+// client.Genre(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *GenrenatorSDK) Genre(data map[string]any) GenrenatorEntity {
 	return NewGenreEntityFunc(sdk, data)
 }
 
 
+// Story returns a Story entity bound to this client.
+// Idiomatic usage: client.Story(nil).List(nil, nil) or
+// client.Story(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *GenrenatorSDK) Story(data map[string]any) GenrenatorEntity {
 	return NewStoryEntityFunc(sdk, data)
 }

@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://binaryjazz.us/wp-json/genrenator/v1',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -78,7 +74,8 @@ class Config {
                     "name": "id",
                     "orig": "count",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -146,7 +143,8 @@ class Config {
                     "name": "id",
                     "orig": "count",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },

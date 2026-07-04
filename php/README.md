@@ -9,9 +9,10 @@ The PHP SDK for the Genrenator API — an entity-oriented client using PHP conve
 
 
 ## Install
-```bash
-composer require voxgig-sdk/genrenator
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/genrenator-sdk/releases](https://github.com/voxgig-sdk/genrenator-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,17 +26,18 @@ loading a specific record.
 <?php
 require_once 'genrenator_sdk.php';
 
-$client = new GenrenatorSDK([
-    "apikey" => getenv("GENRENATOR_APIKEY"),
-]);
+$client = new GenrenatorSDK();
 ```
 
 ### 3. Load a genre
 
 ```php
-[$result, $err] = $client->Genre()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->genre()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -46,28 +48,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -81,7 +86,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = GenrenatorSDK::test();
 
-[$result, $err] = $client->Genrenator()->load(["id" => "test01"]);
+$result = $client->genre()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -116,7 +121,6 @@ Create a `.env.local` file at the project root:
 
 ```
 GENRENATOR_TEST_LIVE=TRUE
-GENRENATOR_APIKEY=<your-key>
 ```
 
 Then run:
@@ -139,7 +143,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -186,8 +189,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -225,7 +232,7 @@ API path: `/story/{count}`
 
 ### Genre
 
-Create an instance: `const genre = client.Genre()`
+Create an instance: `const genre = client.genre`
 
 #### Operations
 
@@ -236,13 +243,13 @@ Create an instance: `const genre = client.Genre()`
 #### Example: Load
 
 ```ts
-const genre = await client.Genre().load({ id: 'genre_id' })
+const genre = await client.genre.load({ id: 'genre_id' })
 ```
 
 
 ### Story
 
-Create an instance: `const story = client.Story()`
+Create an instance: `const story = client.story`
 
 #### Operations
 
@@ -253,7 +260,7 @@ Create an instance: `const story = client.Story()`
 #### Example: Load
 
 ```ts
-const story = await client.Story().load({ id: 'story_id' })
+const story = await client.story.load({ id: 'story_id' })
 ```
 
 
@@ -328,11 +335,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$genre = $client->genre();
+$genre->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $genre->dataGet() now returns the loaded genre data
+// $genre->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

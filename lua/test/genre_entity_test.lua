@@ -91,7 +91,6 @@ function genre_basic_setup(extra)
     ["GENRENATOR_TEST_GENRE_ENTID"] = idmap,
     ["GENRENATOR_TEST_LIVE"] = "FALSE",
     ["GENRENATOR_TEST_EXPLAIN"] = "FALSE",
-    ["GENRENATOR_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ function genre_basic_setup(extra)
   if env["GENRENATOR_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["GENRENATOR_APIKEY"],
       },
       extra or {},
     })

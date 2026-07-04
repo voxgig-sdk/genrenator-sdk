@@ -9,9 +9,12 @@ The TypeScript SDK for the Genrenator API — a type-safe, entity-oriented clien
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/genrenator
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/genrenator-sdk/releases](https://github.com/voxgig-sdk/genrenator-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { GenrenatorSDK } from 'genrenator'
+import { GenrenatorSDK } from '@voxgig-sdk/genrenator'
 
-const client = new GenrenatorSDK({
-  apikey: process.env.GENRENATOR_APIKEY,
-})
+const client = new GenrenatorSDK()
 ```
 
 ### 3. Load a genre
 
 ```ts
-const result = await client.Genre().load({ id: 'example_id' })
+const result = await client.genre.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = GenrenatorSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.genre.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new GenrenatorSDK({ apikey: '...' })
+const client = new GenrenatorSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.genre
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new GenrenatorSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -134,7 +134,6 @@ Create a `.env.local` file at the project root:
 
 ```
 GENRENATOR_TEST_LIVE=TRUE
-GENRENATOR_APIKEY=<your-key>
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new GenrenatorSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new GenrenatorSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -275,7 +272,7 @@ API path: `/story/{count}`
 
 ### Genre
 
-Create an instance: `const genre = client.Genre()`
+Create an instance: `const genre = client.genre`
 
 #### Operations
 
@@ -286,13 +283,13 @@ Create an instance: `const genre = client.Genre()`
 #### Example: Load
 
 ```ts
-const genre = await client.Genre().load({ id: 'genre_id' })
+const genre = await client.genre.load({ id: 'genre_id' })
 ```
 
 
 ### Story
 
-Create an instance: `const story = client.Story()`
+Create an instance: `const story = client.story`
 
 #### Operations
 
@@ -303,7 +300,7 @@ Create an instance: `const story = client.Story()`
 #### Example: Load
 
 ```ts
-const story = await client.Story().load({ id: 'story_id' })
+const story = await client.story.load({ id: 'story_id' })
 ```
 
 
@@ -364,7 +361,7 @@ genrenator/
 Import the SDK from the package root:
 
 ```ts
-import { GenrenatorSDK } from 'genrenator'
+import { GenrenatorSDK } from '@voxgig-sdk/genrenator'
 ```
 
 ### Entity state
@@ -374,11 +371,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const genre = client.genre
+await genre.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// genre.data() now returns the loaded genre data
+// genre.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

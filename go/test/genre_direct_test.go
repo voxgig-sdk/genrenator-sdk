@@ -110,14 +110,12 @@ func genreDirectSetup(mockres any) *genreDirectSetupResult {
 	env := envOverride(map[string]any{
 		"GENRENATOR_TEST_GENRE_ENTID": map[string]any{},
 		"GENRENATOR_TEST_LIVE":    "FALSE",
-		"GENRENATOR_APIKEY":       "NONE",
 	})
 
 	live := env["GENRENATOR_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["GENRENATOR_APIKEY"],
 		}
 		client := sdk.NewGenrenatorSDK(mergedOpts)
 
