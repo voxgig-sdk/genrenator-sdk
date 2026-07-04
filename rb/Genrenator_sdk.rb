@@ -208,26 +208,14 @@ class GenrenatorSDK
   end
 
 
-  # Idiomatic facade: client.genre.list / client.genre.load({ "id" => ... })
-  def genre
-    require_relative 'entity/genre_entity'
-    @genre ||= GenreEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.genre instead.
+  # Canonical facade: client.Genre.list / client.Genre.load({ "id" => ... })
   def Genre(data = nil)
     require_relative 'entity/genre_entity'
     GenreEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.story.list / client.story.load({ "id" => ... })
-  def story
-    require_relative 'entity/story_entity'
-    @story ||= StoryEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.story instead.
+  # Canonical facade: client.Story.list / client.Story.load({ "id" => ... })
   def Story(data = nil)
     require_relative 'entity/story_entity'
     StoryEntity.new(self, data)

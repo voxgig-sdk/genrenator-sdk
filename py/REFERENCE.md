@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## GenreEntity
 
 ```python
-genre = client.genre
+genre = client.Genre()
 ```
 
 ### Operations
@@ -94,7 +94,7 @@ genre = client.genre
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.genre.load({"id": "genre_id"})
+result = client.Genre().load({"id": "genre_id"})
 ```
 
 ### Common Methods
@@ -129,7 +129,7 @@ Return the entity name.
 ## StoryEntity
 
 ```python
-story = client.story
+story = client.Story()
 ```
 
 ### Operations
@@ -139,7 +139,7 @@ story = client.story
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.story.load({"id": "story_id"})
+result = client.Story().load({"id": "story_id"})
 ```
 
 ### Common Methods

@@ -233,10 +233,10 @@ class GenrenatorSDK
 
     private $_genre = null;
 
-    // Idiomatic facade: $client->genre()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Genre() (PHP method
-    // names are case-insensitive).
-    public function genre($data = null)
+    // Canonical facade: $client->Genre()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->genre()
+    // resolves here too.
+    public function Genre($data = null)
     {
         require_once __DIR__ . '/entity/genre_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class GenrenatorSDK
 
     private $_story = null;
 
-    // Idiomatic facade: $client->story()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Story() (PHP method
-    // names are case-insensitive).
-    public function story($data = null)
+    // Canonical facade: $client->Story()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->story()
+    // resolves here too.
+    public function Story($data = null)
     {
         require_once __DIR__ . '/entity/story_entity.php';
         if ($data === null) {

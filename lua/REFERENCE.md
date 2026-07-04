@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## GenreEntity
 
 ```lua
-local genre = client:genre(nil)
+local genre = client:Genre(nil)
 ```
 
 ### Operations
@@ -97,7 +97,7 @@ local genre = client:genre(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:genre():load({ id = "genre_id" })
+local result, err = client:Genre():load({ id = "genre_id" })
 ```
 
 ### Common Methods
@@ -133,7 +133,7 @@ Return the entity name.
 ## StoryEntity
 
 ```lua
-local story = client:story(nil)
+local story = client:Story(nil)
 ```
 
 ### Operations
@@ -143,7 +143,7 @@ local story = client:story(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:story():load({ id = "story_id" })
+local result, err = client:Story():load({ id = "story_id" })
 ```
 
 ### Common Methods

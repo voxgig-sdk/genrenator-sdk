@@ -33,10 +33,12 @@ client = GenrenatorSDK()
 
 ### 3. Load a genre
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.genre.load({"id": "example_id"})
-    print(result)
+    genre = client.Genre().load({"id": "example_id"})
+    print(genre)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = GenrenatorSDK.test()
 
-result = client.genre.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+genre = client.Genre().load({"id": "test01"})
+# genre contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -227,7 +230,7 @@ API path: `/story/{count}`
 
 ### Genre
 
-Create an instance: `const genre = client.genre`
+Create an instance: `genre = client.Genre()`
 
 #### Operations
 
@@ -237,14 +240,14 @@ Create an instance: `const genre = client.genre`
 
 #### Example: Load
 
-```ts
-const genre = await client.genre.load({ id: 'genre_id' })
+```python
+genre = client.Genre().load({"id": "genre_id"})
 ```
 
 
 ### Story
 
-Create an instance: `const story = client.story`
+Create an instance: `story = client.Story()`
 
 #### Operations
 
@@ -254,8 +257,8 @@ Create an instance: `const story = client.story`
 
 #### Example: Load
 
-```ts
-const story = await client.story.load({ id: 'story_id' })
+```python
+story = client.Story().load({"id": "story_id"})
 ```
 
 
@@ -329,7 +332,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-genre = client.genre
+genre = client.Genre()
 genre.load({"id": "example_id"})
 
 # genre.data_get() now returns the loaded genre data

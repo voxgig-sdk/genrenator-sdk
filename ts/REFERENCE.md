@@ -121,7 +121,7 @@ Alias for `GenrenatorSDK.test()`.
 ## GenreEntity
 
 ```ts
-const genre = client.genre
+const genre = client.Genre()
 ```
 
 ### Operations
@@ -131,7 +131,7 @@ const genre = client.genre
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.genre.load({ id: 'genre_id' })
+const result = await client.Genre().load({ id: 'genre_id' })
 ```
 
 ### Common Methods
@@ -165,7 +165,7 @@ Return a copy of the entity options.
 ## StoryEntity
 
 ```ts
-const story = client.story
+const story = client.Story()
 ```
 
 ### Operations
@@ -175,7 +175,7 @@ const story = client.story
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.story.load({ id: 'story_id' })
+const result = await client.Story().load({ id: 'story_id' })
 ```
 
 ### Common Methods

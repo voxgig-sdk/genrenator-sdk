@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:genre():list() / client:genre():load({ id = ... })
-function GenrenatorSDK:genre(data)
+-- Idiomatic facade: client:Genre():list() / client:Genre():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function GenrenatorSDK:Genre(data)
   local EntityMod = require("entity.genre_entity")
   if data == nil then
     if self._genre == nil then
@@ -256,15 +257,10 @@ function GenrenatorSDK:genre(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:genre() instead.
-function GenrenatorSDK:Genre(data)
-  local EntityMod = require("entity.genre_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:story():list() / client:story():load({ id = ... })
-function GenrenatorSDK:story(data)
+-- Idiomatic facade: client:Story():list() / client:Story():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function GenrenatorSDK:Story(data)
   local EntityMod = require("entity.story_entity")
   if data == nil then
     if self._story == nil then
@@ -272,12 +268,6 @@ function GenrenatorSDK:story(data)
     end
     return self._story
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:story() instead.
-function GenrenatorSDK:Story(data)
-  local EntityMod = require("entity.story_entity")
   return EntityMod.new(self, data)
 end
 

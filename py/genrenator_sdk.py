@@ -220,41 +220,21 @@ class GenrenatorSDK:
         }
 
 
-    @property
-    def genre(self):
-        """Idiomatic facade: client.genre.list() / client.genre.load({"id": ...})."""
-        from entity.genre_entity import GenreEntity
-        cached = getattr(self, "_genre", None)
-        if cached is None:
-            cached = GenreEntity(self, None)
-            self._genre = cached
-        return cached
-
-    def Genre(self, data=None):
-        # Deprecated: use client.genre instead.
+    def Genre(self, data=None) -> "GenreEntity":
+        """Entity factory: client.Genre().list({}) / client.Genre().load({"id": ...})."""
         from entity.genre_entity import GenreEntity
         return GenreEntity(self, data)
 
 
-    @property
-    def story(self):
-        """Idiomatic facade: client.story.list() / client.story.load({"id": ...})."""
-        from entity.story_entity import StoryEntity
-        cached = getattr(self, "_story", None)
-        if cached is None:
-            cached = StoryEntity(self, None)
-            self._story = cached
-        return cached
-
-    def Story(self, data=None):
-        # Deprecated: use client.story instead.
+    def Story(self, data=None) -> "StoryEntity":
+        """Entity factory: client.Story().list({}) / client.Story().load({"id": ...})."""
         from entity.story_entity import StoryEntity
         return StoryEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "GenrenatorSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class GenrenatorSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.genre_entity import GenreEntity
+    from entity.story_entity import StoryEntity

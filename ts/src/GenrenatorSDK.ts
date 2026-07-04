@@ -205,28 +205,14 @@ class GenrenatorSDK {
 
 
 
-  _genre?: GenreEntity
-
-  // Idiomatic facade: `client.genre.list()` / `client.genre.load({ id })`.
-  get genre(): GenreEntity {
-    return (this._genre ??= new GenreEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.genre` instead. */
+  // Entity access: `client.Genre().list()` / `client.Genre().load({ id })`.
   Genre(data?: any) {
     const self = this
     return new GenreEntity(self,data)
   }
 
 
-  _story?: StoryEntity
-
-  // Idiomatic facade: `client.story.list()` / `client.story.load({ id })`.
-  get story(): StoryEntity {
-    return (this._story ??= new StoryEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.story` instead. */
+  // Entity access: `client.Story().list()` / `client.Story().load({ id })`.
   Story(data?: any) {
     const self = this
     return new StoryEntity(self,data)

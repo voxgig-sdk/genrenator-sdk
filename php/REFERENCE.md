@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## GenreEntity
 
 ```php
-$genre = $client->genre();
+$genre = $client->Genre();
 ```
 
 ### Operations
@@ -99,7 +99,7 @@ $genre = $client->genre();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->genre()->load(["id" => "genre_id"]);
+$result = $client->Genre()->load(["id" => "genre_id"]);
 ```
 
 ### Common Methods
@@ -135,7 +135,7 @@ Return the entity name.
 ## StoryEntity
 
 ```php
-$story = $client->story();
+$story = $client->Story();
 ```
 
 ### Operations
@@ -145,7 +145,7 @@ $story = $client->story();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->story()->load(["id" => "story_id"]);
+$result = $client->Story()->load(["id" => "story_id"]);
 ```
 
 ### Common Methods

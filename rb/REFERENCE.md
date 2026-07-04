@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## GenreEntity
 
 ```ruby
-genre = client.genre
+genre = client.Genre
 ```
 
 ### Operations
@@ -100,7 +100,7 @@ genre = client.genre
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.genre.load({ "id" => "genre_id" })
+result = client.Genre.load({ "id" => "genre_id" })
 ```
 
 ### Common Methods
@@ -136,7 +136,7 @@ Return the entity name.
 ## StoryEntity
 
 ```ruby
-story = client.story
+story = client.Story
 ```
 
 ### Operations
@@ -146,7 +146,7 @@ story = client.story
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.story.load({ "id" => "story_id" })
+result = client.Story.load({ "id" => "story_id" })
 ```
 
 ### Common Methods

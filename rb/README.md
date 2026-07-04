@@ -32,8 +32,9 @@ client = GenrenatorSDK.new
 
 ```ruby
 begin
-  result = client.genre.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Genre record (raises on error).
+  genre = client.Genre.load({ "id" => "example_id" })
+  puts genre
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = GenrenatorSDK.test
+client = GenrenatorSDK.test({
+  "entity" => { "genre" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.genre.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+genre = client.Genre.load({ "id" => "test01" })
+puts genre
 ```
 
 ### Use a custom fetch function
@@ -227,7 +232,7 @@ API path: `/story/{count}`
 
 ### Genre
 
-Create an instance: `const genre = client.genre`
+Create an instance: `genre = client.Genre`
 
 #### Operations
 
@@ -237,14 +242,15 @@ Create an instance: `const genre = client.genre`
 
 #### Example: Load
 
-```ts
-const genre = await client.genre.load({ id: 'genre_id' })
+```ruby
+# load returns the bare Genre record (raises on error).
+genre = client.Genre.load({ "id" => "genre_id" })
 ```
 
 
 ### Story
 
-Create an instance: `const story = client.story`
+Create an instance: `story = client.Story`
 
 #### Operations
 
@@ -254,8 +260,9 @@ Create an instance: `const story = client.story`
 
 #### Example: Load
 
-```ts
-const story = await client.story.load({ id: 'story_id' })
+```ruby
+# load returns the bare Story record (raises on error).
+story = client.Story.load({ "id" => "story_id" })
 ```
 
 
@@ -330,7 +337,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-genre = client.genre
+genre = client.Genre
 genre.load({ "id" => "example_id" })
 
 # genre.data_get now returns the loaded genre data

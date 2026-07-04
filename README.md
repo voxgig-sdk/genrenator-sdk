@@ -26,9 +26,9 @@ import { GenrenatorSDK } from '@voxgig-sdk/genrenator'
 
 const client = new GenrenatorSDK()
 
-// Load genre data
-const genre = await client.genre.load({})
-console.log(genre.data)
+// Load genre data (returns a Genre)
+const genre = await client.Genre().load()
+console.log(genre)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -85,8 +85,8 @@ from genrenator_sdk import GenrenatorSDK
 client = GenrenatorSDK()
 
 
-# Load a specific genre
-genre = client.genre.load({"id": "example_id"})
+# Load a specific genre (returns the record, raises on error)
+genre = client.Genre().load({"id": "example_id"})
 print(genre)
 ```
 
@@ -99,8 +99,8 @@ require_once 'genrenator_sdk.php';
 $client = new GenrenatorSDK();
 
 
-// Load a specific genre
-$genre = $client->genre()->load(["id" => "example_id"]);
+// Load a specific genre (returns the bare record; throws on error)
+$genre = $client->Genre()->load(["id" => "example_id"]);
 print_r($genre);
 ```
 
@@ -124,8 +124,8 @@ require_relative "Genrenator_sdk"
 client = GenrenatorSDK.new
 
 
-# Load a specific genre
-genre = client.genre.load({ "id" => "example_id" })
+# Load a specific genre (returns the bare record; raises on error)
+genre = client.Genre.load({ "id" => "example_id" })
 puts genre
 ```
 
@@ -138,7 +138,7 @@ local client = sdk.new()
 
 
 -- Load a specific genre
-local genre, err = client:genre():load({ id = "example_id" })
+local genre, err = client:Genre():load({ id = "example_id" })
 print(genre)
 ```
 
@@ -151,22 +151,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = GenrenatorSDK.test()
-const result = await client.genre.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const genre = await client.Genre().load({ id: 'test01' })
+// genre is a bare Genre populated with mock data
+console.log(genre)
 ```
 
 ### Python
 
 ```python
 client = GenrenatorSDK.test()
-result = client.genre.load({"id": "test01"})
+genre = client.Genre().load({"id": "test01"})
+print(genre)
 ```
 
 ### PHP
 
 ```php
-$client = GenrenatorSDK::test();
-$result = $client->genre()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = GenrenatorSDK::test([
+    "entity" => ["genre" => ["test01" => ["id" => "test01"]]],
+]);
+$genre = $client->Genre()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -181,15 +186,18 @@ result, err := client.Genre(nil).Load(
 ### Ruby
 
 ```ruby
-client = GenrenatorSDK.test
-result = client.genre.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = GenrenatorSDK.test({
+  "entity" => { "genre" => { "test01" => { "id" => "test01" } } },
+})
+genre = client.Genre.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:genre():load({ id = "test01" })
+local result, err = client:Genre():load({ id = "test01" })
 ```
 
 ## How it works
@@ -237,6 +245,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 
