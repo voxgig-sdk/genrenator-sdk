@@ -131,7 +131,7 @@ const genre = client.Genre()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Genre().load({ id: 'genre_id' })
+const result = await client.Genre().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -175,7 +175,7 @@ const story = client.Story()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Story().load({ id: 'story_id' })
+const result = await client.Story().load({ id: 1 })
 ```
 
 ### Common Methods

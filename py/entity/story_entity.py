@@ -64,8 +64,13 @@ class StoryEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: StoryLoadMatch, ctrl=None) -> Story:
+    def load(self, reqmatch=None, ctrl=None) -> Story:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Story().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,

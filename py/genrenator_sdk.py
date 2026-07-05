@@ -221,13 +221,13 @@ class GenrenatorSDK:
 
 
     def Genre(self, data=None) -> "GenreEntity":
-        """Entity factory: client.Genre().list({}) / client.Genre().load({"id": ...})."""
+        """Entity factory: client.Genre().list() / client.Genre().load({"id": ...})."""
         from entity.genre_entity import GenreEntity
         return GenreEntity(self, data)
 
 
     def Story(self, data=None) -> "StoryEntity":
-        """Entity factory: client.Story().list({}) / client.Story().load({"id": ...})."""
+        """Entity factory: client.Story().list() / client.Story().load({"id": ...})."""
         from entity.story_entity import StoryEntity
         return StoryEntity(self, data)
 

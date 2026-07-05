@@ -8,7 +8,7 @@ Complete API reference for the Genrenator Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'genrenator_sdk'
+require_relative 'Genrenator_sdk'
 
 client = GenrenatorSDK.new(options)
 ```
