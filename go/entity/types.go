@@ -14,7 +14,7 @@ type Genre struct {
 
 // GenreLoadMatch is the typed request payload for Genre.LoadTyped.
 type GenreLoadMatch struct {
-	Id int `json:"id"`
+	Id *int `json:"id,omitempty"`
 }
 
 // Story is the typed data model for the story entity.
@@ -23,7 +23,7 @@ type Story struct {
 
 // StoryLoadMatch is the typed request payload for Story.LoadTyped.
 type StoryLoadMatch struct {
-	Id int `json:"id"`
+	Id *int `json:"id,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

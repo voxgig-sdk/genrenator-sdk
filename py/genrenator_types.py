@@ -20,7 +20,7 @@ class Genre(TypedDict):
     pass
 
 
-class GenreLoadMatch(TypedDict):
+class GenreLoadMatch(TypedDict, total=False):
     id: int
 
 
@@ -28,5 +28,5 @@ class Story(TypedDict):
     pass
 
 
-class StoryLoadMatch(TypedDict):
+class StoryLoadMatch(TypedDict, total=False):
     id: int

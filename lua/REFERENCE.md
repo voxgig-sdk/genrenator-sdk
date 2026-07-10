@@ -97,7 +97,7 @@ local genre = client:Genre(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Genre():load({ id = "genre_id" })
+local result, err = client:Genre():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -143,7 +143,7 @@ local story = client:Story(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Story():load({ id = "story_id" })
+local result, err = client:Story():load({ id = 1 })
 ```
 
 ### Common Methods

@@ -291,7 +291,7 @@ Create an instance: `genre := client.Genre(nil)`
 #### Example: Load
 
 ```go
-genre, err := client.Genre(nil).Load(map[string]any{"id": "genre_id"}, nil)
+genre, err := client.Genre(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -312,7 +312,7 @@ Create an instance: `story := client.Story(nil)`
 #### Example: Load
 
 ```go
-story, err := client.Story(nil).Load(map[string]any{"id": "story_id"}, nil)
+story, err := client.Story(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }

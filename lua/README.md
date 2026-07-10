@@ -36,7 +36,7 @@ local client = sdk.new()
 ### 3. Load a genre
 
 ```lua
-local genre, err = client:Genre():load({ id = "example_id" })
+local genre, err = client:Genre():load({ id = 1 })
 if err then error(err) end
 print(genre)
 ```
@@ -258,7 +258,7 @@ Create an instance: `local genre = client:Genre(nil)`
 #### Example: Load
 
 ```lua
-local genre, err = client:Genre():load({ id = "genre_id" })
+local genre, err = client:Genre():load({ id = 1 })
 ```
 
 
@@ -275,7 +275,7 @@ Create an instance: `local story = client:Story(nil)`
 #### Example: Load
 
 ```lua
-local story, err = client:Story():load({ id = "story_id" })
+local story, err = client:Story():load({ id = 1 })
 ```
 
 

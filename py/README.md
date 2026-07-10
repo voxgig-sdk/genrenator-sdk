@@ -42,7 +42,7 @@ client = GenrenatorSDK()
 
 ```python
 try:
-    genre = client.Genre().load({"id": "example_id"})
+    genre = client.Genre().load({"id": 1})
     print(genre)
 except Exception as err:
     print(f"load failed: {err}")
@@ -273,7 +273,7 @@ Create an instance: `genre = client.Genre()`
 #### Example: Load
 
 ```python
-genre = client.Genre().load({"id": "genre_id"})
+genre = client.Genre().load({"id": 1})
 ```
 
 
@@ -290,7 +290,7 @@ Create an instance: `story = client.Story()`
 #### Example: Load
 
 ```python
-story = client.Story().load({"id": "story_id"})
+story = client.Story().load({"id": 1})
 ```
 
 

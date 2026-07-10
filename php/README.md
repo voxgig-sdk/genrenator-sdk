@@ -36,7 +36,7 @@ $client = new GenrenatorSDK();
 ```php
 try {
     // load() returns the bare Genre record (throws on error).
-    $genre = $client->Genre()->load(["id" => "example_id"]);
+    $genre = $client->Genre()->load(["id" => 1]);
     print_r($genre);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -281,7 +281,7 @@ Create an instance: `$genre = $client->Genre();`
 
 ```php
 // load() returns the bare Genre record (throws on error).
-$genre = $client->Genre()->load(["id" => "genre_id"]);
+$genre = $client->Genre()->load(["id" => 1]);
 ```
 
 
@@ -299,7 +299,7 @@ Create an instance: `$story = $client->Story();`
 
 ```php
 // load() returns the bare Story record (throws on error).
-$story = $client->Story()->load(["id" => "story_id"]);
+$story = $client->Story()->load(["id" => 1]);
 ```
 
 

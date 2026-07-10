@@ -9,12 +9,12 @@
 ---@class Genre
 
 ---@class GenreLoadMatch
----@field id number
+---@field id? number
 
 ---@class Story
 
 ---@class StoryLoadMatch
----@field id number
+---@field id? number
 
 local M = {}
 

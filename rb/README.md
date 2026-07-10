@@ -35,7 +35,7 @@ client = GenrenatorSDK.new
 ```ruby
 begin
   # load returns the bare Genre record (raises on error).
-  genre = client.Genre.load({ "id" => "example_id" })
+  genre = client.Genre.load({ "id" => 1 })
   puts genre
 rescue => err
   warn "load failed: #{err}"
@@ -271,7 +271,7 @@ Create an instance: `genre = client.Genre`
 
 ```ruby
 # load returns the bare Genre record (raises on error).
-genre = client.Genre.load({ "id" => "genre_id" })
+genre = client.Genre.load({ "id" => 1 })
 ```
 
 
@@ -289,7 +289,7 @@ Create an instance: `story = client.Story`
 
 ```ruby
 # load returns the bare Story record (raises on error).
-story = client.Story.load({ "id" => "story_id" })
+story = client.Story.load({ "id" => 1 })
 ```
 
 

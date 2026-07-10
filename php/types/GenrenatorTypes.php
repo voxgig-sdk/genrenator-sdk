@@ -20,7 +20,7 @@ class Genre
 /** Request payload for Genre#load. */
 class GenreLoadMatch
 {
-    public int $id;
+    public ?int $id = null;
 }
 
 /** Story entity data model. */
@@ -31,6 +31,6 @@ class Story
 /** Request payload for Story#load. */
 class StoryLoadMatch
 {
-    public int $id;
+    public ?int $id = null;
 }
 

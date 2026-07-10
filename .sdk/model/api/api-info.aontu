@@ -16,9 +16,9 @@ main: {
           url: "https://binaryjazz.us/wp-json/genrenator/v1"
         }
       ]
+      summary: "The Genrenator API generates random music genres and genre-related stories based on various fragments of attributes such as instruments and adjectives."
       title: "Genrenator API"
       version: "1.0.0"
+      website: "https://binaryjazz.us/genrenator-api/"
     }
   }
-}
-

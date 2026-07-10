@@ -95,6 +95,7 @@ same parameters as `Direct()`.
 
 ```go
 genre := client.Genre(nil)
+fmt.Println(genre.GetName()) // "genre"
 ```
 
 ### Operations
@@ -104,7 +105,11 @@ genre := client.Genre(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Genre(nil).Load(map[string]any{"id": "genre_id"}, nil)
+result, err := client.Genre(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -135,6 +140,7 @@ Return the entity name.
 
 ```go
 story := client.Story(nil)
+fmt.Println(story.GetName()) // "story"
 ```
 
 ### Operations
@@ -144,7 +150,11 @@ story := client.Story(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Story(nil).Load(map[string]any{"id": "story_id"}, nil)
+result, err := client.Story(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

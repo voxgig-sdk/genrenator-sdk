@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -323,14 +320,17 @@
           "url": "https://binaryjazz.us/genrenator-api/"
         },
         "description": "The Genrenator API generates random music genres and genre-related stories based on various fragments of attributes such as instruments and adjectives. It features endpoints for both genre and genre story requests, allowing developers to retrieve unique genre information programmatically. The API uses catalogs of genre fragments including instruments, beats, adjectives, prefixes and suffixes, regions, and genres to create unique combinations.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://binaryjazz.us/wp-json/genrenator/v1"
           }
         ],
+        "summary": "The Genrenator API generates random music genres and genre-related stories based on various fragments of attributes such as instruments and adjectives.",
         "title": "Genrenator API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://binaryjazz.us/genrenator-api/"
       },
       "option": {},
       "target": {
@@ -383,6 +383,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -433,6 +436,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

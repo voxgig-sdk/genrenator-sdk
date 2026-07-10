@@ -9,13 +9,13 @@ export interface Genre {
 }
 
 export interface GenreLoadMatch {
-  id: number
+  id?: number
 }
 
 export interface Story {
 }
 
 export interface StoryLoadMatch {
-  id: number
+  id?: number
 }
 

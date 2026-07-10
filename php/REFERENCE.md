@@ -99,7 +99,7 @@ $genre = $client->Genre();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Genre()->load(["id" => "genre_id"]);
+$result = $client->Genre()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -145,7 +145,7 @@ $story = $client->Story();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Story()->load(["id" => "story_id"]);
+$result = $client->Story()->load(["id" => 1]);
 ```
 
 ### Common Methods

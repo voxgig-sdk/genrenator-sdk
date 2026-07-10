@@ -15,7 +15,7 @@ end
 # Request payload for Genre#load.
 #
 # @!attribute [rw] id
-#   @return [Integer]
+#   @return [Integer, nil]
 GenreLoadMatch = Struct.new(
   :id,
   keyword_init: true
@@ -28,7 +28,7 @@ end
 # Request payload for Story#load.
 #
 # @!attribute [rw] id
-#   @return [Integer]
+#   @return [Integer, nil]
 StoryLoadMatch = Struct.new(
   :id,
   keyword_init: true
