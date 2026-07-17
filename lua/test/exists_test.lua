@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Genrenator SDK exists test
 
 local sdk = require("genrenator_sdk")
 
