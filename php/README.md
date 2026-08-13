@@ -35,7 +35,7 @@ $client = new GenrenatorSDK();
 
 ```php
 try {
-    // load() returns the bare Genre record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Genre record (throws on error).
     $genre = $client->Genre()->load(["id" => 1]);
     print_r($genre);
 } catch (\Throwable $err) {
@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $genre = $client->Genre()->load(["id" => 1]);
+    $genre = $client->Genre()->load();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -126,7 +126,8 @@ $client = GenrenatorSDK::test([
     "entity" => ["genre" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $genre = $client->Genre()->load(["id" => "test01"]);
 print_r($genre);
 ```
@@ -226,7 +227,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -280,7 +281,7 @@ Create an instance: `$genre = $client->Genre();`
 #### Example: Load
 
 ```php
-// load() returns the bare Genre record (throws on error).
+// load() returns the ENTITY — call data_get() for the Genre record (throws on error).
 $genre = $client->Genre()->load(["id" => 1]);
 ```
 
@@ -298,7 +299,7 @@ Create an instance: `$story = $client->Story();`
 #### Example: Load
 
 ```php
-// load() returns the bare Story record (throws on error).
+// load() returns the ENTITY — call data_get() for the Story record (throws on error).
 $story = $client->Story()->load(["id" => 1]);
 ```
 
@@ -380,7 +381,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $genre = $client->Genre();
-$genre->load(["id" => 1]);
+$genre->load();
 
 // $genre->data_get() now returns the genre data from the last load
 // $genre->match_get() returns the last match criteria

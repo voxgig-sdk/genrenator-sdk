@@ -34,7 +34,7 @@ client = GenrenatorSDK.new
 
 ```ruby
 begin
-  # load returns the bare Genre record (raises on error).
+  # load returns the ENTITY — call data_get for the Genre record (raises on error).
   genre = client.Genre.load({ "id" => 1 })
   puts genre
 rescue => err
@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  genre = client.Genre.load({ "id" => 1 })
+  genre = client.Genre.load()
 rescue => err
   warn "load failed: #{err}"
 end
@@ -120,7 +120,8 @@ client = GenrenatorSDK.test({
   "entity" => { "genre" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 genre = client.Genre.load({ "id" => "test01" })
 puts genre
 ```
@@ -270,7 +271,7 @@ Create an instance: `genre = client.Genre`
 #### Example: Load
 
 ```ruby
-# load returns the bare Genre record (raises on error).
+# load returns the ENTITY — call data_get for the Genre record (raises on error).
 genre = client.Genre.load({ "id" => 1 })
 ```
 
@@ -288,7 +289,7 @@ Create an instance: `story = client.Story`
 #### Example: Load
 
 ```ruby
-# load returns the bare Story record (raises on error).
+# load returns the ENTITY — call data_get for the Story record (raises on error).
 story = client.Story.load({ "id" => 1 })
 ```
 
@@ -370,7 +371,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 genre = client.Genre
-genre.load({ "id" => 1 })
+genre.load()
 
 # genre.data_get now returns the genre data from the last load
 # genre.match_get returns the last match criteria

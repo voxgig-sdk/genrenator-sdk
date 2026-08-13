@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local genre, err = client:Genre():load({ id = 1 })
+local genre, err = client:Genre():load()
 if err then error(err) end
 ```
 
@@ -356,7 +356,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local genre = client:Genre()
-genre:load({ id = 1 })
+genre:load()
 
 -- genre:data_get() now returns the genre data from the last load
 -- genre:match_get() returns the last match criteria

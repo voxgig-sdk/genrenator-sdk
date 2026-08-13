@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from genrenator_sdk.utility.voxgig_struct import voxgig_struct as vs
 from genrenator_sdk import GenrenatorSDK
-from core import helpers
+from genrenator_sdk.core import helpers
 from test import runner
 
 

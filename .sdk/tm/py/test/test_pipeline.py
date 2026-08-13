@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import GenrenatorSDK
-from core.error import GenrenatorError
-from core.result import GenrenatorResult
-from core.response import GenrenatorResponse
-from core.spec import GenrenatorSpec
-from feature.base_feature import GenrenatorBaseFeature
+from projectname_sdk.core.error import GenrenatorError
+from projectname_sdk.core.result import GenrenatorResult
+from projectname_sdk.core.response import GenrenatorResponse
+from projectname_sdk.core.spec import GenrenatorSpec
+from projectname_sdk.feature.base_feature import GenrenatorBaseFeature
 
 
 def _client():

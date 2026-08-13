@@ -53,7 +53,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const genre = await client.Genre().load({ id: 1 })
+  const genre = await client.Genre().load()
   console.log(genre)
 } catch (err) {
   console.error('load failed:', err)
@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = GenrenatorSDK.test()
 
 const genre = await client.Genre().load({ id: 1 })
-// genre is a bare entity populated with mock response data
+// genre is the entity, populated with mock response data
+// — call genre.data() for the record itself
 console.log(genre)
 ```
 
@@ -408,7 +409,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const genre = client.Genre()
-await genre.load({ id: 1 })
+await genre.load()
 
 // genre.data() now returns the genre data from the last `load`
 // genre.match() returns { id: 1 }

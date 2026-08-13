@@ -53,6 +53,7 @@ class GenrenatorConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/genre/{count}',
                   'parts' => [
@@ -78,6 +79,7 @@ class GenrenatorConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/genre',
                   'parts' => [
@@ -122,6 +124,7 @@ class GenrenatorConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/story/{count}',
                   'parts' => [
@@ -147,6 +150,7 @@ class GenrenatorConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/story',
                   'parts' => [

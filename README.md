@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = GenrenatorSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = GenrenatorSDK.test({
+  entity: {
+    genre: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const genre = await client.Genre().load({ id: 1 })
-// genre is a bare Genre populated with mock data
+// genre is the Genre entity, populated with mock data
+// — call genre.data() for the record itself
 console.log(genre)
 ```
 
@@ -183,7 +192,7 @@ require_once 'genrenator_sdk.php';
 $client = new GenrenatorSDK();
 
 
-// Load a specific genre (returns the bare record; throws on error)
+// Load a specific genre (returns the ENTITY; call data_get() for the record; throws on error)
 $genre = $client->Genre()->load(["id" => 1]);
 print_r($genre);
 ```
@@ -211,7 +220,7 @@ require_relative "Genrenator_sdk"
 client = GenrenatorSDK.new
 
 
-# Load a specific genre (returns the bare record; raises on error)
+# Load a specific genre (returns the ENTITY; call data_get for the record)
 genre = client.Genre.load({ "id" => 1 })
 puts genre
 ```
@@ -345,6 +354,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://binaryjazz.us/genrenator-api/](https://binaryjazz.us/genrenator-api/)
 

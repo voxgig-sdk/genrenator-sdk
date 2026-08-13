@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-genre, err := client.Genre(nil).Load(map[string]any{"id": 1}, nil)
+genre, err := client.Genre(nil).Load(nil, nil)
 if err != nil {
     // handle err
     return
@@ -394,7 +394,7 @@ stores the returned data and match criteria internally.
 
 ```go
 genre := client.Genre(nil)
-genre.Load(map[string]any{"id": 1}, nil)
+genre.Load(nil, nil)
 
 // genre.Data() now returns the genre data from the last load
 // genre.Match() returns the last match criteria

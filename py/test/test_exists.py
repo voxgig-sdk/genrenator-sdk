@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Genrenator SDK exists test
 
 import pytest
 from genrenator_sdk import GenrenatorSDK
