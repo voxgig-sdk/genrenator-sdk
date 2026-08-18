@@ -23,7 +23,7 @@ support (`load`):
 
 ```ts
 const client = new GenrenatorSDK()
-const genre = await client.Genre().load()
+const genre = await client.Genre().load({ id: 1 })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —

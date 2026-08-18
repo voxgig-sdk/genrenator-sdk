@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  genre = client.Genre.load()
+  genre = client.Genre.load({ "id" => 1 })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -371,7 +371,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 genre = client.Genre
-genre.load()
+genre.load({ "id" => 1 })
 
 # genre.data_get now returns the genre data from the last load
 # genre.match_get returns the last match criteria

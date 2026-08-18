@@ -28,7 +28,7 @@ class GenrenatorSDK
     utility = GenrenatorUtility.new
     @_utility = utility
 
-    config = GenrenatorConfig.make_config
+    config = GenrenatorConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

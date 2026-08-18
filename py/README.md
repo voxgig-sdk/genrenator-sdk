@@ -55,7 +55,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    genre = client.Genre().load()
+    genre = client.Genre().load({"id": 1})
     print(genre)
 except Exception as err:
     print(f"load failed: {err}")
@@ -371,7 +371,7 @@ stores the returned data and match criteria internally.
 
 ```python
 genre = client.Genre()
-genre.load()
+genre.load({"id": 1})
 
 # genre.data_get() now returns the genre data from the last load
 # genre.match_get() returns the last match criteria

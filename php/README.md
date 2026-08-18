@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $genre = $client->Genre()->load();
+    $genre = $client->Genre()->load(["id" => 1]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -381,7 +381,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $genre = $client->Genre();
-$genre->load();
+$genre->load(["id" => 1]);
 
 // $genre->data_get() now returns the genre data from the last load
 // $genre->match_get() returns the last match criteria

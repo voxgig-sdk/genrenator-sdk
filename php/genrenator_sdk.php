@@ -40,7 +40,7 @@ class GenrenatorSDK
         $utility = new GenrenatorUtility();
         $this->_utility = $utility;
 
-        $config = GenrenatorConfig::make_config();
+        $config = GenrenatorConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

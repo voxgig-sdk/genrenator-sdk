@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from genrenator_sdk.config import make_config
+from genrenator_sdk.config import shared_config
 from genrenator_sdk.features import _make_feature
 from genrenator_sdk.core.control import GenrenatorControl
 from genrenator_sdk.core.error import GenrenatorError
@@ -24,7 +24,7 @@ from genrenator_sdk.core.spec import GenrenatorSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 
