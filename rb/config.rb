@@ -19,6 +19,9 @@ module GenrenatorConfig
     {
       "main" => {
         "name" => "Genrenator",
+        "slug" => "genrenator",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {

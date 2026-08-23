@@ -33,6 +33,9 @@ class GenrenatorConfig
         return [
             "main" => [
                 "name" => "Genrenator",
+                "slug" => "genrenator",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
