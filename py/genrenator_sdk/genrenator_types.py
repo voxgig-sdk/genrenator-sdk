@@ -16,16 +16,16 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class Genre(TypedDict):
-    pass
+class Genre(TypedDict, total=False):
+    id: str
 
 
 class GenreLoadMatch(TypedDict):
     id: int
 
 
-class Story(TypedDict):
-    pass
+class Story(TypedDict, total=False):
+    id: str
 
 
 class StoryLoadMatch(TypedDict):

@@ -48,9 +48,13 @@ class GenreEntityTest extends TestCase
 
         // LOAD
         $genre_ref01_ent = $client->Genre(null);
-        $genre_ref01_match_dt0 = [];
+        $genre_ref01_match_dt0 = [
+            "id" => $genre_ref01_data["id"],
+        ];
         $genre_ref01_data_dt0_loaded = $genre_ref01_ent->load($genre_ref01_match_dt0, null);
-        $this->assertNotNull($genre_ref01_data_dt0_loaded);
+        $genre_ref01_data_dt0_load_result = Helpers::to_map(is_object($genre_ref01_data_dt0_loaded) && method_exists($genre_ref01_data_dt0_loaded, 'data_get') ? $genre_ref01_data_dt0_loaded->data_get() : $genre_ref01_data_dt0_loaded);
+        $this->assertNotNull($genre_ref01_data_dt0_load_result);
+        $this->assertEquals($genre_ref01_data_dt0_load_result["id"], $genre_ref01_data["id"]);
 
     }
 }

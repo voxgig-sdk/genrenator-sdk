@@ -28,6 +28,7 @@ module GenrenatorConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -42,7 +43,12 @@ module GenrenatorConfig
       },
       "entity" => {
         "genre" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "genre",
           "op" => {
             "load" => {
@@ -106,7 +112,12 @@ module GenrenatorConfig
           },
         },
         "story" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "story",
           "op" => {
             "load" => {

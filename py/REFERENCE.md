@@ -87,6 +87,12 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 genre = client.Genre()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -131,6 +137,12 @@ Return the entity name.
 ```python
 story = client.Story()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 

@@ -15,6 +15,7 @@ declare(strict_types=1);
 /** Genre entity data model. */
 class Genre
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Genre#load. */
@@ -26,6 +27,7 @@ class GenreLoadMatch
 /** Story entity data model. */
 class Story
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Story#load. */

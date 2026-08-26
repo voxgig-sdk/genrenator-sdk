@@ -48,9 +48,13 @@ class TestGenreEntity:
 
         # LOAD
         genre_ref01_ent = client.Genre(None)
-        genre_ref01_match_dt0 = {}
+        genre_ref01_match_dt0 = {
+            "id": genre_ref01_data["id"],
+        }
         genre_ref01_data_dt0_loaded = genre_ref01_ent.load(genre_ref01_match_dt0, None)
-        assert genre_ref01_data_dt0_loaded is not None
+        genre_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(genre_ref01_data_dt0_loaded))
+        assert genre_ref01_data_dt0_load_result is not None
+        assert genre_ref01_data_dt0_load_result["id"] == genre_ref01_data["id"]
 
 
 

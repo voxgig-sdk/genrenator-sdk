@@ -48,9 +48,13 @@ class StoryEntityTest extends TestCase
 
         // LOAD
         $story_ref01_ent = $client->Story(null);
-        $story_ref01_match_dt0 = [];
+        $story_ref01_match_dt0 = [
+            "id" => $story_ref01_data["id"],
+        ];
         $story_ref01_data_dt0_loaded = $story_ref01_ent->load($story_ref01_match_dt0, null);
-        $this->assertNotNull($story_ref01_data_dt0_loaded);
+        $story_ref01_data_dt0_load_result = Helpers::to_map(is_object($story_ref01_data_dt0_loaded) && method_exists($story_ref01_data_dt0_loaded, 'data_get') ? $story_ref01_data_dt0_loaded->data_get() : $story_ref01_data_dt0_loaded);
+        $this->assertNotNull($story_ref01_data_dt0_load_result);
+        $this->assertEquals($story_ref01_data_dt0_load_result["id"], $story_ref01_data["id"]);
 
     }
 }

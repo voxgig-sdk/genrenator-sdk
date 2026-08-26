@@ -41,9 +41,13 @@ class StoryEntityTest < Minitest::Test
 
     # LOAD
     story_ref01_ent = client.Story(nil)
-    story_ref01_match_dt0 = {}
+    story_ref01_match_dt0 = {
+      "id" => story_ref01_data["id"],
+    }
     story_ref01_data_dt0_loaded = story_ref01_ent.load(story_ref01_match_dt0, nil)
-    assert !story_ref01_data_dt0_loaded.nil?
+    story_ref01_data_dt0_load_result = Helpers.to_map(story_ref01_data_dt0_loaded.respond_to?(:data_get) ? story_ref01_data_dt0_loaded.data_get : story_ref01_data_dt0_loaded)
+    assert !story_ref01_data_dt0_load_result.nil?
+    assert_equal story_ref01_data_dt0_load_result["id"], story_ref01_data["id"]
 
   end
 end

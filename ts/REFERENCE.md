@@ -124,6 +124,12 @@ Alias for `GenrenatorSDK.test()`.
 const genre = client.Genre()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -167,6 +173,12 @@ Return a copy of the entity options.
 ```ts
 const story = client.Story()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

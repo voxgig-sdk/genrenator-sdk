@@ -44,10 +44,14 @@ describe("GenreEntity", function()
 
     -- LOAD
     local genre_ref01_ent = client:Genre(nil)
-    local genre_ref01_match_dt0 = {}
+    local genre_ref01_match_dt0 = {
+      id = genre_ref01_data["id"],
+    }
     local genre_ref01_data_dt0_loaded, err = genre_ref01_ent:load(genre_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(genre_ref01_data_dt0_loaded)
+    local genre_ref01_data_dt0_load_result = helpers.to_map(type(genre_ref01_data_dt0_loaded) == 'table' and genre_ref01_data_dt0_loaded.data_get and genre_ref01_data_dt0_loaded:data_get() or genre_ref01_data_dt0_loaded)
+    assert.is_not_nil(genre_ref01_data_dt0_load_result)
+    assert.are.equal(genre_ref01_data_dt0_load_result["id"], genre_ref01_data["id"])
 
   end)
 end)

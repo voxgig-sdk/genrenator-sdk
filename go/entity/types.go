@@ -14,6 +14,7 @@ import (
 
 // Genre is the typed data model for the genre entity.
 type Genre struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // GenreLoadMatch is the typed request payload for Genre.LoadTyped.
@@ -23,6 +24,7 @@ type GenreLoadMatch struct {
 
 // Story is the typed data model for the story entity.
 type Story struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // StoryLoadMatch is the typed request payload for Story.LoadTyped.

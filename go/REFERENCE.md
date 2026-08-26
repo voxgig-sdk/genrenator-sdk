@@ -98,6 +98,12 @@ genre := client.Genre(nil)
 fmt.Println(genre.GetName()) // "genre"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -142,6 +148,12 @@ Return the entity name.
 story := client.Story(nil)
 fmt.Println(story.GetName()) // "story"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

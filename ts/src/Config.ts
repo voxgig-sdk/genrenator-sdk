@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -67,7 +68,12 @@ class Config {
 
   entity = {
     "genre": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "genre",
       "op": {
         "load": {
@@ -131,7 +137,12 @@ class Config {
       }
     },
     "story": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "story",
       "op": {
         "load": {

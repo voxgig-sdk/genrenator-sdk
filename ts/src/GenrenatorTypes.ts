@@ -6,6 +6,7 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Genre {
+  id?: string
 }
 
 export interface GenreLoadMatch {
@@ -13,6 +14,7 @@ export interface GenreLoadMatch {
 }
 
 export interface Story {
+  id?: string
 }
 
 export interface StoryLoadMatch {

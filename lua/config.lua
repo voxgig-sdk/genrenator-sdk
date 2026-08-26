@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -30,7 +31,12 @@ local function make_config()
     },
     entity = {
       ["genre"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "genre",
         ["op"] = {
           ["load"] = {
@@ -94,7 +100,12 @@ local function make_config()
         },
       },
       ["story"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "story",
         ["op"] = {
           ["load"] = {

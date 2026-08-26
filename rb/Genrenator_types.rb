@@ -9,8 +9,13 @@
 # annotations document the shapes. Do not edit by hand.
 
 # Genre entity data model.
-class Genre
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Genre = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Genre#load.
 #
@@ -22,8 +27,13 @@ GenreLoadMatch = Struct.new(
 )
 
 # Story entity data model.
-class Story
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Story = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Story#load.
 #

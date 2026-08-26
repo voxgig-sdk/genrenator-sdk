@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -34,7 +35,12 @@ func MakeConfig() map[string]any {
 		},
 		"entity": map[string]any{
 			"genre": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "genre",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -98,7 +104,12 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"story": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "story",
 				"op": map[string]any{
 					"load": map[string]any{

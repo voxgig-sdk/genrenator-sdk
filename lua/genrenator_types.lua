@@ -7,11 +7,13 @@
 -- edit by hand.
 
 ---@class Genre
+---@field id? string
 
 ---@class GenreLoadMatch
 ---@field id number
 
 ---@class Story
+---@field id? string
 
 ---@class StoryLoadMatch
 ---@field id number

@@ -92,6 +92,12 @@ Prepare a fetch definition without sending the request. Returns the
 $genre = $client->Genre();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -137,6 +143,12 @@ Return the entity name.
 ```php
 $story = $client->Story();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

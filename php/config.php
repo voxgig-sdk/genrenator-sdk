@@ -42,6 +42,7 @@ class GenrenatorConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -56,7 +57,12 @@ class GenrenatorConfig
             ],
             "entity" => [
         'genre' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'genre',
           'op' => [
             'load' => [
@@ -120,7 +126,12 @@ class GenrenatorConfig
           ],
         ],
         'story' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'story',
           'op' => [
             'load' => [

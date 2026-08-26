@@ -61,13 +61,19 @@ func TestGenreEntity(t *testing.T) {
 
 		// LOAD
 		genreRef01Ent := client.Genre(nil)
-		genreRef01MatchDt0 := map[string]any{}
+		genreRef01MatchDt0 := map[string]any{
+			"id": genreRef01Data["id"],
+		}
 		genreRef01DataDt0Loaded, err := genreRef01Ent.Load(genreRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if genreRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		genreRef01DataDt0LoadResult := core.ToMapAny(entityData(genreRef01DataDt0Loaded))
+		if genreRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if genreRef01DataDt0LoadResult["id"] != genreRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

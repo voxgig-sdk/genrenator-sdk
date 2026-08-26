@@ -44,10 +44,14 @@ describe("StoryEntity", function()
 
     -- LOAD
     local story_ref01_ent = client:Story(nil)
-    local story_ref01_match_dt0 = {}
+    local story_ref01_match_dt0 = {
+      id = story_ref01_data["id"],
+    }
     local story_ref01_data_dt0_loaded, err = story_ref01_ent:load(story_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(story_ref01_data_dt0_loaded)
+    local story_ref01_data_dt0_load_result = helpers.to_map(type(story_ref01_data_dt0_loaded) == 'table' and story_ref01_data_dt0_loaded.data_get and story_ref01_data_dt0_loaded:data_get() or story_ref01_data_dt0_loaded)
+    assert.is_not_nil(story_ref01_data_dt0_load_result)
+    assert.are.equal(story_ref01_data_dt0_load_result["id"], story_ref01_data["id"])
 
   end)
 end)

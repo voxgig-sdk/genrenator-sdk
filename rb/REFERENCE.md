@@ -93,6 +93,12 @@ same parameters as `direct()`. Raises on error.
 genre = client.Genre
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -138,6 +144,12 @@ Return the entity name.
 ```ruby
 story = client.Story
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
