@@ -63,6 +63,10 @@ class GenrenatorConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'genre',
           'op' => [
             'load' => [
@@ -85,13 +89,17 @@ class GenrenatorConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/genre/{count}',
-                  'parts' => [
-                    'genre',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'count' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'genre',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -103,19 +111,28 @@ class GenrenatorConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [
+                    'genre',
+                    '{id}',
+                  ],
                 ],
                 [
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/genre',
-                  'parts' => [
-                    'genre',
+                  'segments' => [
+                    [
+                      'lit' => 'genre',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'genre',
                   ],
                 ],
               ],
@@ -131,6 +148,10 @@ class GenrenatorConfig
               'name' => 'id',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'story',
           'op' => [
@@ -154,13 +175,17 @@ class GenrenatorConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/story/{count}',
-                  'parts' => [
-                    'story',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'count' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'story',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -172,19 +197,28 @@ class GenrenatorConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [
+                    'story',
+                    '{id}',
+                  ],
                 ],
                 [
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/story',
-                  'parts' => [
-                    'story',
+                  'segments' => [
+                    [
+                      'lit' => 'story',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'story',
                   ],
                 ],
               ],

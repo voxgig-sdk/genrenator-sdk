@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -74,6 +85,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "genre",
       "op": {
         "load": {
@@ -96,15 +111,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/genre/{count}",
-              "parts": [
-                "genre",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "count": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "genre"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -113,21 +132,30 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "genre",
+                "{id}"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/genre",
-              "parts": [
-                "genre"
+              "segments": [
+                {
+                  "lit": "genre"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "genre"
+              ]
             }
           ]
         }
@@ -143,6 +171,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "story",
       "op": {
         "load": {
@@ -165,15 +197,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/story/{count}",
-              "parts": [
-                "story",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "count": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "story"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -182,21 +218,30 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "story",
+                "{id}"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/story",
-              "parts": [
-                "story"
+              "segments": [
+                {
+                  "lit": "story"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "story"
+              ]
             }
           ]
         }
@@ -212,6 +257,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

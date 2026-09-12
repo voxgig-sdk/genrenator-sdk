@@ -37,6 +37,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "genre",
         ["op"] = {
           ["load"] = {
@@ -59,13 +63,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/genre/{count}",
-                ["parts"] = {
-                  "genre",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["count"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "genre",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -77,19 +85,28 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "genre",
+                  "{id}",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/genre",
-                ["parts"] = {
-                  "genre",
+                ["segments"] = {
+                  {
+                    ["lit"] = "genre",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "genre",
                 },
               },
             },
@@ -105,6 +122,10 @@ local function make_config()
             ["name"] = "id",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "story",
         ["op"] = {
@@ -128,13 +149,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/story/{count}",
-                ["parts"] = {
-                  "story",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["count"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "story",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -146,19 +171,28 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "story",
+                  "{id}",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/story",
-                ["parts"] = {
-                  "story",
+                ["segments"] = {
+                  {
+                    ["lit"] = "story",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "story",
                 },
               },
             },

@@ -37,15 +37,19 @@ main: kit: entity: story: {
           }
           method: "GET"
           orig: "/story/{count}"
-          parts: [
-            "story"
-            "{id}"
-          ]
           rename: {
             param: {
               count: "id"
             }
           }
+          segments: [
+            {
+              lit: "story"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -59,8 +63,10 @@ main: kit: entity: story: {
         {
           method: "GET"
           orig: "/story"
-          parts: [
-            "story"
+          segments: [
+            {
+              lit: "story"
+            }
           ]
           transform: {
             req: "`reqdata`"

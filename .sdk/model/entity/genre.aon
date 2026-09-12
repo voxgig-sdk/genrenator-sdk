@@ -37,15 +37,19 @@ main: kit: entity: genre: {
           }
           method: "GET"
           orig: "/genre/{count}"
-          parts: [
-            "genre"
-            "{id}"
-          ]
           rename: {
             param: {
               count: "id"
             }
           }
+          segments: [
+            {
+              lit: "genre"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -59,8 +63,10 @@ main: kit: entity: genre: {
         {
           method: "GET"
           orig: "/genre"
-          parts: [
-            "genre"
+          segments: [
+            {
+              lit: "genre"
+            }
           ]
           transform: {
             req: "`reqdata`"
