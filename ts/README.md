@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { GenrenatorSDK } from '@voxgig-sdk/genrenator'
+import { GenrenatorSDK } from '@voxgig-sdk/genrenator-sdk'
 
 const client = new GenrenatorSDK()
 ```
@@ -435,7 +435,7 @@ genrenator/
 Import the SDK from the package root:
 
 ```ts
-import { GenrenatorSDK } from '@voxgig-sdk/genrenator'
+import { GenrenatorSDK } from '@voxgig-sdk/genrenator-sdk'
 ```
 
 ### Entity state
