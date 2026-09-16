@@ -16,5 +16,70 @@
     "genre": {
       "genre_ref01": {}
     }
+  },
+  "requests": {
+    "GET /genre/{count}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getGenres",
+        "parameters": [
+          {
+            "description": "Number of genres to generate",
+            "in": "path",
+            "name": "count",
+            "required": true,
+            "schema": {
+              "example": 10,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    "ambient electronic jazz",
+                    "indie folk rock",
+                    "experimental hip hop"
+                  ],
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successfully generated multiple random genres"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /genre": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getGenre",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": "ambient electronic jazz",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successfully generated a random genre"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

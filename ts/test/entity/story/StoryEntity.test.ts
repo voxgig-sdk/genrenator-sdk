@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GenrenatorSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('StoryEntity', async () => {
 
     const live = 'TRUE' === process.env.GENRENATOR_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'story.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'story.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GENRENATOR_TEST_STORY_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":0}],"id":{"field":"id","name":"id"},"name":"story","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"example":25,"kind":"param","name":"id","orig":"count","reqd":true,"type":"`$INTEGER`","index$":0}]},"contract":{"id":"GET /story/{count}","json":"{\"operationId\":\"getStories\",\"parameters\":[{\"description\":\"Number of stories to generate\",\"in\":\"path\",\"name\":\"count\",\"required\":true,\"schema\":{\"example\":25,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"example\":[\"In the underground clubs of Berlin, a new sound emerged combining electronic beats with traditional folk instruments.\",\"A group of musicians in Tokyo pioneered a fusion of ambient soundscapes and traditional percussion.\",\"The genre was born in the late night jazz clubs where experimental artists pushed boundaries.\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"}}},\"description\":\"Successfully generated multiple random genre stories\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/story/{count}","rename":{"param":{"count":"id"}},"segments":[{"lit":"story"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0},{"active":true,"args":{},"contract":{"id":"GET /story","json":"{\"operationId\":\"getStory\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"example\":\"In the underground clubs of Berlin, a new sound emerged combining electronic beats with traditional folk instruments.\",\"type\":\"string\"}}},\"description\":\"Successfully generated a random genre story\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/story","segments":[{"lit":"story"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"story","name__orig":"story","Name":"Story","name_":"story","name-":"story","NAME":"STORY","index$":1}, {"active":true,"entity":"story","key$":"BasicStoryFlow","kind":"basic","name":"BasicStoryFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"story_ref01","srcdatavar":"story_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-story_ref01"}}],"index$":0}]}, 'Story')
     }
     const client = setup.client
     const struct = setup.struct
@@ -110,13 +109,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GENRENATOR_TEST_STORY_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GENRENATOR_TEST_STORY_ENTID': idmap,
     'GENRENATOR_TEST_LIVE': 'FALSE',
@@ -127,7 +119,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GENRENATOR_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GENRENATOR_TEST_STORY_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GenrenatorSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -139,7 +137,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -152,7 +151,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GENRENATOR_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 
