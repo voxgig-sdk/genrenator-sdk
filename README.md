@@ -105,12 +105,12 @@ local result, err = client:Genre():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/genrenator-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/genrenator-sdk/releases) |
-| Python | `voxgig-sdk-genrenator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/genrenator-sdk/releases) |
-| PHP | `voxgig-sdk/genrenator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/genrenator-sdk/releases) |
+| TypeScript | `@voxgig-sdk/genrenator-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/genrenator-sdk/tags) |
+| Python | `voxgig-sdk-genrenator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/genrenator-sdk/tags) |
+| PHP | `voxgig-sdk/genrenator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/genrenator-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/genrenator-sdk/go` | `go get github.com/voxgig-sdk/genrenator-sdk/go@latest` |
-| Ruby | `voxgig-sdk-genrenator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/genrenator-sdk/releases) |
-| Lua | `voxgig-sdk-genrenator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/genrenator-sdk/releases) |
+| Ruby | `voxgig-sdk-genrenator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/genrenator-sdk/tags) |
+| Lua | `voxgig-sdk-genrenator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/genrenator-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/genrenator-sdk/go-cli` | `go install github.com/voxgig-sdk/genrenator-sdk/go-cli/cmd/genrenator@latest` |
 | Go MCP server | `github.com/voxgig-sdk/genrenator-sdk/go-mcp` | `go get github.com/voxgig-sdk/genrenator-sdk/go-mcp@latest` |
 

@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicGenreFlow.aon"
-@"BasicStoryFlow.aon"
+@"./BasicGenreFlow.aon"
+@"./BasicStoryFlow.aon"

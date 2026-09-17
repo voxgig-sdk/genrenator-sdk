@@ -1,4 +1,4 @@
 # Entity Models
 
-@"genre.aon"
-@"story.aon"
+@"./genre.aon"
+@"./story.aon"

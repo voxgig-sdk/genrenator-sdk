@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      genre: {
-      },
-
-      story: {
-      },
-
+        genre: {
+        },
+  
+        story: {
+        },
+  
     }
   }
 
