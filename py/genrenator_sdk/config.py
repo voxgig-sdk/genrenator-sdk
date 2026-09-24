@@ -117,6 +117,7 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
         ],
@@ -131,26 +132,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "example": 10,
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "count",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/genre/{count}",
-                "rename": {
-                  "param": {
-                    "count": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "genre",
@@ -159,22 +143,38 @@ def make_config():
                     "var": "id",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
+                "parts": [
+                  "genre",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "count": "id",
+                  },
                 },
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "genre",
-                  "{id}",
-                ],
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "count",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": 10,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
               },
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/genre",
@@ -183,14 +183,16 @@ def make_config():
                     "lit": "genre",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "genre",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "genre",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -203,6 +205,7 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
         ],
@@ -217,26 +220,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "example": 25,
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "count",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/story/{count}",
-                "rename": {
-                  "param": {
-                    "count": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "story",
@@ -245,22 +231,38 @@ def make_config():
                     "var": "id",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
+                "parts": [
+                  "story",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "count": "id",
+                  },
                 },
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "story",
-                  "{id}",
-                ],
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "count",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": 25,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
               },
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/story",
@@ -269,14 +271,16 @@ def make_config():
                     "lit": "story",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "story",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "story",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },

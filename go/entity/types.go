@@ -1,7 +1,7 @@
 // Typed models for the Genrenator SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,7 +14,6 @@ import (
 
 // Genre is the typed data model for the genre entity.
 type Genre struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // GenreLoadMatch is the typed request payload for Genre.LoadTyped.
@@ -24,7 +23,6 @@ type GenreLoadMatch struct {
 
 // Story is the typed data model for the story entity.
 type Story struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // StoryLoadMatch is the typed request payload for Story.LoadTyped.

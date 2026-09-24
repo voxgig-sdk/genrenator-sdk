@@ -1,0 +1,28 @@
+# BasicStoryFlow
+
+main: kit: flow: BasicStoryFlow:
+{
+  entity: "story",
+  kind: "basic",
+  name: "BasicStoryFlow",
+  step: [
+    {
+      i: {
+        ref: "story_ref01",
+        srcdatavar: "story_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-story_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicStoryFlow"
+}
