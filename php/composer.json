@@ -1,5 +1,5 @@
 {
-  "name": "voxgig-sdk/genrenator",
+  "name": "voxgig-sdk/genrenator-sdk",
   "description": "Unofficial generated PHP SDK for the Genrenator public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
   "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "genrenator"],
